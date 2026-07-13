@@ -1,5 +1,5 @@
 # 1단계: 빌드 스테이지 (Maven과 Java 11 환경에서 빌드 진행)
-FROM maven:3.8.6-openjdk-11 AS build
+FROM maven:3.8.6-eclipse-temurin-11 AS build
 WORKDIR /app
 
 # 라이브러리 설치를 위해 pom.xml 먼저 복사 및 빌드 소스 복사
