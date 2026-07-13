@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: planhub
+
+  datasource:
+    url: jdbc:h2:mem:planhub;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  security:
+    user:
+      name: admin
+      password: 1234
+
+server:
+  port: 8080
+
+# ⚠️ 이 파일은 .gitignore에 추가하세요! (공개 저장소에 올리면 안 됩니다)
+neis:
+  api:
+    school-key: "87b93423dca74ca78c6b677a6e871e67"  # 학교 정보 API 키
+    meal-key: "e1863c8d497b47d9ab93b5764af2a031"    # 급식 정보 API 키
+    timetable-key: "8c0ba85f35e64fab899abf0eb2d44596" # 시간표 정보 API 키

@@ -1,0 +1,11 @@
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\service\SchoolService.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\controller\SchoolController.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\entity\School.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\repository\ScheduleRepository.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\controller\AdminController.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\service\ScheduleService.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\entity\Schedule.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\PlanHubApplication.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\entity\ClassRoom.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\dto\Dtos.java
+D:\dev\planhub\planhub\backend\src\main\java\com\planhub\entity\Teacher.java
