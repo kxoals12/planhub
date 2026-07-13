@@ -10,7 +10,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # 2단계: 실행 스테이지 (가벼운 자바 런타임만 사용해서 용량 최적화)
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-jre
 WORKDIR /app
 
 # 1단계 빌드 결과물인 jar 파일을 실행 스테이지로 가져오기
