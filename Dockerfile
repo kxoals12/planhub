@@ -1,24 +1,24 @@
-# 1단계: 빌드 스테이지 (Maven과 Java 11 환경에서 빌드 진행)
-FROM maven:3.8.6-eclipse-temurin-11 AS build
+# 1단계: 빌드 스테이지 (자바 17 메이븐 이미지 사용)
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# 라이브러리 설치를 위해 pom.xml 먼저 복사 및 빌드 소스 복사
+# 라이브러리 캐싱을 위해 pom.xml 먼저 복사 및 다운로드
 COPY pom.xml .
-COPY src ./src
+RUN mvn dependency:go-offline
 
-# 테스트를 제외하고 패키징(jar 파일 생성) 진행
+# 소스 코드 복사 및 빌드
+COPY src ./src
 RUN mvn clean package -DskipTests
 
-# 2단계: 실행 스테이지 (가벼운 자바 런타임만 사용해서 용량 최적화)
-FROM eclipse-temurin:11-jre
+# 2단계: 실행 스테이지 (가벼운 자바 17 런타임 사용)
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# 1단계 빌드 결과물인 jar 파일을 실행 스테이지로 가져오기
+# 빌드 스테이지에서 생성된 jar 파일만 쏙 빼오기
 COPY --from=build /app/target/*.jar app.jar
 
-# Cloud Run에서 동적으로 주입하는 포트 설정 바인딩
-ENV PORT 8080
+# 서버 실행 포트 설정
 EXPOSE 8080
 
 # 애플리케이션 실행
-ENTRYPOINT ["java", "-jar", "-Dserver.port=${PORT}", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
